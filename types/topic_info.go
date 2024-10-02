@@ -119,7 +119,7 @@ type TopicInfo struct {
 	Config            map[string]*string
 	Users             []User
 	DeletionPolicy    DeletionPolicy
-	NoSuffix 	      bool
+	NoSuffix 	      bool `json:",string"`
 }
 
 func NewTopicInfo(props map[string]interface{}) (*TopicInfo, error) {
