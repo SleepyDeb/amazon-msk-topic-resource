@@ -21,7 +21,11 @@ func isRetriable(err error) bool {
 	return true
 }
 
-func shortStackID(stackID string) string {
+func shortStackID(stackID string, noSuffix bool) string {
+	if noSuffix {
+		return ""
+	}
+
 	h := sha256.Sum256([]byte(stackID))
 	id := base32.StdEncoding.WithPadding(base64.NoPadding).EncodeToString(h[0:])
 	return id[0:8]
@@ -32,6 +36,10 @@ func shortStackID(stackID string) string {
 // topic. Canonical topic name is created by appending a short hash
 // of stackID to topic name.
 func canonicalTopicName(name, shortStackID string) string {
+	if shortStackID == "" {
+		return name
+	}
+
 	return fmt.Sprintf("%s-%s", name, shortStackID)
 }
 

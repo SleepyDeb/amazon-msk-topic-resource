@@ -33,7 +33,7 @@ func newCmdUpdate(kmsKeyResolver KmsKeyResolverService, userManager UserManagerS
 }
 
 func (a *cmdUpdate) Run(ctx context.Context, old, new *types.TopicInfo, stackID string) error {
-	shortStackID := shortStackID(stackID)
+	shortStackID := shortStackID(stackID, old.NoSuffix)
 	topicName := canonicalTopicName(new.Name, shortStackID)
 	topics, err := a.kafkaClient.ListTopics(ctx, topicName)
 	if err != nil {

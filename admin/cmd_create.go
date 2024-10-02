@@ -39,7 +39,7 @@ func (a *cmdCreate) Run(ctx context.Context, info *types.TopicInfo, stackID stri
 	if err != nil {
 		return nil, errors.WithStack(err)
 	}
-	shortStackID := shortStackID(stackID)
+	shortStackID := shortStackID(stackID, info.NoSuffix)
 	topicName := canonicalTopicName(info.Name, shortStackID)
 	a.logger.Sugar().Infow("Start Operation", "Name", "CreateTopic", "TopicName", topicName)
 	_, err = a.kafkaClient.CreateTopic(ctx, int32(info.Partitions), int16(info.ReplicationFactor), info.Config, topicName)

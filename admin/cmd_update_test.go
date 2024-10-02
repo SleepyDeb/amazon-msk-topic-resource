@@ -146,7 +146,7 @@ func TestCmdUpdate(t *testing.T) {
 
 	stackID := "test"
 	kmsKeyID := "test-kms-key-arn"
-	shortStackID := shortStackID(stackID)
+	shortStackID := shortStackID(stackID, info.NoSuffix)
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
 			// Arrange

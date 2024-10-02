@@ -34,7 +34,7 @@ func (a *cmdDelete) Run(ctx context.Context, info *types.TopicInfo, stackID stri
 	if err != nil {
 		return errors.WithStack(err)
 	}
-	shortStackID := shortStackID(stackID)
+	shortStackID := shortStackID(stackID, info.NoSuffix)
 	resourceID := canonicalTopicName(info.Name, shortStackID)
 	if info.Users != nil {
 		for _, u := range info.Users {
