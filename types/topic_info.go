@@ -88,7 +88,7 @@ const topicInfoSchema string = `
 		},
 		"NoSuffix": {
 			"description": "Remove autocomputed suffix from the resource name",
-			"type": "boolean"
+			"type": "string"
 		}
 	},
 	"additionalProperties": false
