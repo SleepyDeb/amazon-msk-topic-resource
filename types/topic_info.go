@@ -88,7 +88,7 @@ const topicInfoSchema string = `
 		},
 		"NoSuffix": {
 			"description": "Remove autocomputed suffix from the resource name",
-			"type": "bool"
+			"type": "boolean"
 		}
 	},
 	"additionalProperties": false
@@ -135,7 +135,7 @@ func NewTopicInfo(props map[string]interface{}) (*TopicInfo, error) {
 	}
 
 	if result.Valid() {
-		var ti = TopicInfo{DeletionPolicy: DeletionPolicyRetain, NoSuffix: false }
+		var ti = TopicInfo{DeletionPolicy: DeletionPolicyRetain }
 		err := json.Unmarshal(buf, &ti)
 		return &ti, err
 	} else {
