@@ -85,6 +85,10 @@ const topicInfoSchema string = `
 			"type": "string",
 			"description": "Specify what to be done to the topic and data when the CloudFormation stack is deleted",
 			"enum": ["DELETE", "RETAIN"]
+		},
+		"NoSuffix": {
+			"description": "Remove autocomputed suffix from the resource name",
+			"type": "bool"
 		}
 	},
 	"additionalProperties": false
